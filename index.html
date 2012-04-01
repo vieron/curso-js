@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->  <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	
+	<title>Getting Started with deck.js</title>
+	
+	<meta name="description" content="A jQuery library for modern HTML presentations">
+	<meta name="author" content="Caleb Troughton">
+	<meta name="viewport" content="width=1024, user-scalable=no">
+	
+	<!-- Core and extension CSS files -->
+	<link rel="stylesheet" href="deck-js/core/deck.core.css">
+	<link rel="stylesheet" href="deck-js/extensions/goto/deck.goto.css">
+	<link rel="stylesheet" href="deck-js/extensions/menu/deck.menu.css">
+	<link rel="stylesheet" href="deck-js/extensions/navigation/deck.navigation.css">
+	<link rel="stylesheet" href="deck-js/extensions/status/deck.status.css">
+	<link rel="stylesheet" href="deck-js/extensions/hash/deck.hash.css">
+	
+	<!-- Style theme. More available in /themes/style/ or create your own. -->
+	<link rel="stylesheet" href="deck-js/themes/style/swiss.css">
+	
+	<!-- Transition theme. More available in /themes/transition/ or create your own. -->
+	<link rel="stylesheet" href="deck-js/themes/transition/horizontal-slide.css">
+	
+	<script src="deck-js/modernizr.custom.js"></script>
+</head>
+
+<body >
+
+<div class="container">
+  <article class="deck-container">
+    <!-- Begin slides -->
+    <section class="slide" id="title-slide">
+    	<h1>JavaScript</h1>
+    </section>
+    
+    
+    <section class="slide" id="js-in-the-browser">
+      <h2>JavaScript in the Browser</h2>
+      <p>
+        <br /><br /><br /><br /><br />
+        <img src="images/js-in-the-browser.jpg" />
+      </p>
+    </section>
+     
+    <section class="slide" id="how-to-overview">
+    	<h2>JavaScript in the Browser</h2>
+      <ul>
+        <li>
+          <h3>ECMAScript</h3>
+          <p>Sintaxis, Tipos de datos, Declaraciones, Palabras clave, Palabras reservadas,	Operadores, Objetos, ...</p>
+        </li>
+        <li>
+          <h3>Document Object Model (DOM)</h3>
+          <p>API para manipular XML. Permite tener el control sobre el contenido, su estructura y su presentación.</p>
+        </li>
+        <li>
+          <h3>Browser Object Model (BOM)</h3>
+          <p>API para interactuar con el navegador. Capacidad para abrir ventanas, mover y redimensionar, objeto <code>navigator</code> con información sobre el navegador, objeto <code>location</code> con información sobre la página cargada, soporte para cookies, ...</p>
+        </li>
+      </ul>
+      
+    </section>
+    
+    <section class="slide" id="execute-js-in-the-browser-I">
+      <h2>Ejecutar JS en el navegador I</h2>
+      <p>Con la etiqueta <code>&lt;script&gt;</code></p>
+      <ul>
+        <li>
+          <h3>Inline scripts</h3>
+<pre><code>&lt;script type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;
+  alert(&#x27;hola&#x27;);
+&lt;/script&gt;
+</code></pre>          
+        </li>
+        <li>
+          <h3>External scripts</h3>
+<pre><code>&lt;script src=&quot;javascripts/external_script.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+        </li>
+        <li>
+          <h3>Deferred scripts</h3>
+<pre><code>&lt;script defer=&quot;defer&quot;&gt;&lt;/script&gt;
+</code></pre>
+        </li>
+      </ul>
+    </section>
+    
+    <section class="slide" id="execute-js-in-the-browser-II">
+      <h2>Ejecutar JS en el navegador II</h2>
+      <ul>
+        <li>
+          <h3>Event-driven scripts</h3>
+          <pre><code>&lt;body onload=&quot;function(){ alert(&#x27;p&aacute;gina cargada&#x27;) }&quot;&gt;</code></pre>
+        </li>
+        <li>
+          <h3>Dynamic script loading</h3>
+          <pre><code>&lt;script type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;
+  function loadScript(src){
+    var headObj = document.getElementsByTagName( &#x27;head&#x27; )[0],
+        newScriptObj = document.createElement( &#x27;script&#x27; );
+    
+    newScriptObj.type = &#x27;text/javascript&#x27;;
+    newScriptObj.src = src;
+    headObj.appendChild( newScriptObj );
+  }
+&lt;/script&gt;</code></pre>
+        </li>
+      </ul>     
+    </section>
+    
+    <section class="slide" id="execute-js-in-the-browser-III">
+      <h2>Ejecutar JS en el navegador III</h2>
+      <ul>
+        <li>
+          <h3>Javascript in URL&#x27;s</h3>
+          <pre><code>javascript:alert('Hola!')</code></pre>
+          <pre><code>&lt;a href=&quot;javascript:alert(&#x27;Hola!&#x27;)&quot;&gt;Saluda&lt;/a&gt;</code></pre>
+        </li>
+      </ul>     
+    </section>
+    
+    <section class="slide" id="js-basics">
+    	<h1>JavaScript Basics</h1>
+    </section>
+    
+    
+    <section class="slide" id="prototype-based">
+    	<h2>Herencia por prototipo</h2>
+    	<p>Cada instancia de un objeto clona todos los métodos y propiedades del prototipo en dicha instancia.</p>
+    	
+    	<pre><code>function Perro(name){
+   this.name = name
+ }
+
+Perro.prototype = {
+  ladrar : function(){
+    console.log('Soy '+this.name+' y estoy ladrando');
+  }
+}
+
+// Nueva instancia de Perro
+var maggie = new Perro('Maggie');
+// La instancia hereda los métodos del prototipo
+maggie.ladrar();</code></pre>
+    	
+    </section>
+    
+    <section class="slide" id="literals">
+    	<h2>Literales</h2>
+    	<p>Un literal es el valor de cualquier dato representado directamente en el código.</p>
+    	
+    	<pre>true
+2.3
+/regex/g
+null
+"hola"
+[1, 2, 3]
+...
+</pre>
+    </section>
+    
+    
+    <section class="slide" id="literal-types-I">
+    	<h2>Tipos de literales I</h2>
+    	<ul>
+    	 <li>
+    	   <h3>Números enteros</h3>
+    	   <pre><code>var a = 10; // decimal, base 10
+var b = -10; // decimal, base 10
+var c = 031; // octal, base 8, número 25
+var d = 0x3214 // hex, base 16, número 12820
+</code></pre>
+    	 </li>
+       <li>
+         <h3>Números decimales</h3>
+         <pre><code>var a = 3.141516;
+var b = .33333333;
+var c = 9.2E4; Notacion exponencial, número 92000
+var c = -9.2e4; Notacion exponencial, número -92000 </code></pre>
+        </li>
+        
+    	</ul>
+    </section>
+    
+    <section class="slide" id="literal-types-II">
+    	<h2>Tipos de literales II</h2>
+    	<ul>
+    	 <li>
+           <h3>Booleanos</h3>
+           <pre><code>var a = true;
+var b = false;</code></pre>
+        </li>
+    	 <li>
+    	   <h3>Cadenas de caracteres</h3>
+    	   <pre><code>var a = "hola";
+var b = 'hola';
+var c = "CD's";
+var d = 'CD\'s';
+var e = "EL dijo \"Hola!\"";
+</code></pre>
+    	 </li>
+    	</ul>
+    </section>
+        
+    <section class="slide" id="literal-types-III">
+    	<h2>Tipos de literales III</h2>
+    	<ul>
+    	 <li>
+       <h3>Arrays</h3>
+       <pre><code>var a = ["rojo", "verde", "azul"];
+var b = ["rojo", 12, false, 1.2e10, ["rojo", "verde", "azul"], null];
+var c = [1, 2, 3, , 5];
+var e = [a, b, c]; // Array multidimensional
+</code></pre>
+      </li>
+      <li>
+         <h3>Expresiones regulares</h3>
+         <pre><code>var a = /.jpg/;
+var b = new RegExp(".jpg");</code></pre>
+        </li>
+        <li>
+           <h3>Objetos</h3>
+           <pre><code>var a = { nombre : 'Javier', 'Primer apellido' : 'Sánchez-Marín' };</code></pre>
+          </li>
+    	</ul>
+    </section>
+    
+    
+     <section class="slide" id="statements">
+    	<h2>Sentencias</h2>
+    	<p>Es un comando para un navegador, una igualación, una comparacion, una invocación... Cada sentencia suele estar delimitada por <code>;</code></p>
+    	
+    	<pre><code>var a = 1; var b = 2;</code></pre>
+    
+    </section>   
+        
+    
+    <section class="slide" id="blocks">
+      <h2>Bloques</h2>
+      <p>Los bloques son sentencias o grupos de sentencias delimitadas por <code>{}</code></p>
+      <ul>
+        <li>
+          <h3>Generan scope</h3>
+          <p>La variable a es accesible fuera del bloque.</p>
+          <pre><code>if( !a ){ 
+  var a = true;
+}</code></pre>
+        </li>
+        <li>
+          <h3>No generan scope</h3>
+          <p>La variable a no es accesible fuera del bloque.</p>
+          <pre><code>function saluda(){ 
+  var a = 'hola';
+  return a;
+}</code></pre>
+        </li>
+      </ul>
+
+    </section>
+    
+    
+    <section class="slide" id="closures">
+    	<h2>Closures</h2>
+    	<p>Una función que esta ligada a variables externas declaradas en un scope superior.</p>
+    	<pre><code>function addToTen(num){
+  return function(){
+    return num+10;
+  }();
+}
+
+addToTen(5); // 15
+</code></pre>
+
+      <p>Después vemos mas ejemplos.</p>
+    </section>
+    
+    
+    <section class="slide" id="reserved-words">
+    	<h2>Palabras reservadas</h2>
+      <p>break, case, catch, continue, debugger, default, delete, do, else, finally, for, function, if, in, instanceof, new, return, switch, this, throw, try, typeof, var, void, while, with
+      <h3>Palabras reservadas para su uso en el futuro</h3>
+      <p>class, enum, export, extend, import, super, implements, interface, let, package, private, protected, public, static, yield</p>
+    </section>
+    
+    
+    <section class="slide" id="variables-I">
+      <h2>Variables I</h2>
+      
+      <ul>
+        <li>
+          <h3>Declaración de una variable</h3>
+          <pre><code>var a;</code></pre>
+        </li>
+        <li>
+          <h3>Declaración de una variable y asignación de valor</h3>
+          <pre><code>var b = 10;</code></pre>
+        </li>
+        <li>
+          <h3>Declaración múltiple</h3>
+          <pre><code>var a, b, c, d = 1;
+var a = 1, b = 2, c = 3, d = 4;
+</code></pre>
+        </li>
+      </ul>
+      
+    </section>
+    
+    <section class="slide" id="variables-II">
+      <h2>Variables II</h2>
+      
+      <ul>
+        <li>
+          <h3>Declaración implícita</h3>
+          <p>Si se declara una variable sin <code>var</code>, la variable es asignada al scope global. En este caso <code>window</code>. Es buena practica utilizar siempre <code>var</code> para la declaración.</p>
+          <pre><code>z = 10; //Esto es lo mismo que window.z = 10;</code></pre>
+        </li>
+        <li>
+          <h3>Identificadores</h3>
+          <p>Es la cadena de caracteres que da nombre a una variable.</p>
+          <ul>
+            <li>Case Sensitive</li>
+            <li>Tienen que empezar por una letra o <code>_</code></li>
+            <li>Pueden contener números pero no empezar por uno</li>
+            <li>No pueden contener espacios, signos de puntuación, operadores matemáticos, operadores lógicos ni caracteres extraños. <code>_</code> y <code>$</code> son una excepción.</li>
+          </ul>
+        </li>
+      </ul>
+      
+    </section> 
+
+    <section class="slide" id="data-types">
+    	<h2>Tipos de datos</h2>
+      <ul class="row">
+        <li class="col s1of2">
+          <h3>Primitivos</h3>
+          <ul>
+            <li>Number</li>
+            <li>String</li>
+            <li>Boolean</li>
+            <li>--</li>
+            <li>null</li>
+            <li>undefined</li>
+          </ul>
+        </li>
+        <li class="col s1of2">
+          <h3>De Referencia</h3>
+          <ul>
+            <li>Objects</li>
+            <ul>
+              <li>Array</li>
+              <li>Function</li>
+              <li>Date</li>
+              <li>RegExp</li>
+              <li>Error</li>
+            </ul>
+          </ul>
+        </li>
+      </ul>
+    </section>
+    
+    <section class="slide" id="primitive-vs-reference">
+    	<h2>Primitivos vs Referencia</h2>
+      <img src="images/primitive_vs_reference.png">
+    </section>
+    
+    <section class="slide" id="primitive-types">
+    	<h2>Datos Primitivos</h2>
+    	
+    	<p>Si cambiamos el valor de una copia NO se refleja en el original. Son valores diferentes y se almacenan por separado.</p>
+    	
+    	<pre><code>var myNum = 100; 
+var myNum2 = myNum;	// 100 
+
+myNum2 = 101;
+
+console.log(myNum);	// 100
+console.log(myNum2);	// 101
+</code></pre>
+      
+    </section>
+    
+    <section class="slide" id="reference-types">
+    	<h2>Datos por Referencia</h2>
+    	
+    	<p>Si cambiamos el valor de una copia se refleja en el original. Las dos variables hacen referencia a la misma posición en memoria.</p>
+    	
+    	<pre><code>var myObj = {name: "David", age: 12};
+var myObj2 = myObj;
+
+myObj2.name = "Simon";
+
+console.log(myObj.name); // "Simon"
+console.log(myObj2.name); // "Simon"
+</code></pre>
+
+      <p>Esto tambien aplica a las variables pasadas como argumentos a una función. Veremos mas adelante el porqué.</p>
+      
+    </section>
+    
+    
+    <section class="slide" id="null-and-undefined">
+    	<h2><code>null</code> y <code>undefined</code></h2>
+      
+      <pre><code>var a;</code></pre>
+      
+      <p>Esta variable hasta que se le asigne un valor es de tipo <code>undefined</code>.</p>
+      
+      <p><code>null</code> indica un valor vacio.</p>
+      
+      <p>Cuando una variable es de tipo <code>undefined</code>, ha sido creada pero no tiene un valor. Cuando es de tipo <code>null</code>, ha sido creada y se le ha asignado un valor vacio. </p>
+    </section>
+    
+    
+    <section class="slide" id="determining-type">
+    	<h2>Determinar el tipo de un dato</h2>
+    	
+    	<p>Para ello tenemos el operador <code>typeof</code></p>
+    	
+    	<pre><code>var a = "hola!";
+console.log(typeof a); // "string"
+</code></pre>
+
+      <p>Es un operador no una función. Si lo veis así:</p>
+      <pre><code>typeof(a);</code></pre>
+      <p>Lo que esta entre paréntesis, se esta evaluando como una expresión. No es una invocación pasando un argumento.</p>
+
+    </section>
+    
+    <section class="slide" id="returned-typeof-values">
+    	<h2>Valores devueltos por <code>typeof</code></h2>
+    	
+    	<table class="dft_table">
+    	  <thead>
+    	   <tr>
+    	     <th>Tipo de dato</th>
+    	     <th>Resultado de typeof</th>
+    	   </tr>
+    	  </thead>
+    	  <tbody>
+    	   <tr>
+    	     <td>String</td>
+    	     <td>"string"</td>
+    	   </tr>
+    	   <tr>
+     	     <td>Number</td>
+     	     <td>"number"</td>
+     	   </tr>
+     	   <tr>
+     	     <td>Boolean</td>
+     	     <td>"boolean"</td>
+     	   </tr>
+     	   <tr>
+     	     <td>Null</td>
+     	     <td>"object"</td>
+     	   </tr>
+     	   <tr>
+     	    <td>Undefined</td>
+     	    <td>"undefined"</td>
+     	   </tr>
+     	   <tr>
+     	    <td>Object</td>
+     	    <td>"object"</td>
+     	   </tr>
+     	   <tr>
+     	    <td>Function</td>
+     	    <td>"function"</td>
+     	   </tr>
+    	  </tbody>
+    	</table>
+
+    </section>
+    
+     
+    <section class="slide" id="type-conversion-I">
+    	<h2>Conversión implícita de tipos I</h2>
+    	
+    	<p>A la hora de hacer operaciones entre tipos de datos diferentes, JavaScript hace conversiones de datos "automáticas".</p>
+    	
+    	<pre><code>"3.1415"-1 // 2.1415 (number)</code></pre>
+    	
+    	<pre><code>"3.1415"+1 // "3.14151" (string)</code></pre>
+    	
+    	<pre><code>var myNum = "3.1415";
+if(myNum){  // myNum es convertida automáticamente a booleano
+  alert('existe');
+}</code></pre>
+    	
+    	
+    </section>
+    
+    
+    <section class="slide" id="type-conversion-II">
+    	<h2>Conversión implícita de tipos II</h2>
+    	
+      <table class="dft_table">
+    	  <thead>
+    	   <tr>
+    	     <th>Tipo de dato</th>
+    	     <th>Conversión a Número</th>
+    	     <th>Conversión a Booleano</th>
+    	     <th>Conversión a String</th>
+    	   </tr>
+    	  </thead>
+    	  <tbody>
+    	   <tr>
+    	     <td>Null</td>
+    	     <td>0</td>
+    	     <td>false</td>
+    	     <td>"Null"</td>
+    	   </tr>
+    	   <tr>
+     	     <td>Undefined</td>
+     	     <td>NaN</td>
+     	     <td>false</td>
+     	     <td>"Undefined"</td>
+     	   </tr>
+     	   <tr>
+      	    <td>Number</td>
+      	    <td>-</td>
+      	    <td>false si 0 ó NaN<br />si no true</td>
+      	    <td>NaN o la la representación del número como cadena</td>
+      	   </tr>
+     	   <tr>
+     	     <td>Boolean</td>
+     	     <td>1 si true<br />0 si false</td>
+     	     <td>-</td>
+     	     <td>"true" or "false"</td>
+     	   </tr>
+     	   
+     	   <tr>
+     	     <td>String</td>
+     	     <td>El valor númerico de la cadena si es un número<br />si no NaN</td>
+     	     <td>false si length = 0<br />si no true</td>
+     	     <td>-</td>
+     	   </tr>
+     	   <tr>
+     	     <td>Object</td>
+     	     <td>NaN</td>
+     	     <td>true</td>
+     	     <td>si el objeto existe object.toString()<br />si no "undefined"</td>
+     	   </tr>
+    	  </tbody>
+    	</table>
+      
+    	
+    	
+    </section>
+    
+    
+    <section class="slide" id="type-casting">
+    	<h2>Forzando la conversión de tipos</h2>
+      <ul>
+        <li>
+          <h3><code>parseFloat(valor)</code></h3>
+          <p>Fuerza una cadena de caracteres a número decimal.</p>
+          <pre><code>parseFloat("2.13"); //2.13 (number)</code></pre>
+        </li>
+        <li>
+          <h3><code>parseInt(valor)</code></h3>
+          <p>Fuerza una cadena de caracteres a número entero.</p>
+          <pre><code>parseFloat("2.13"); //2 (number)
+parseFloat("25px"); //25 (number)</code></pre>
+        </li>
+        <li>
+          <h3><code>Object.toString();</code></h3>
+          <p>Devuelve la representación de cualquier objeto como cadena.</p>
+          <pre><code>({name : "Javi"}).toString(); // "[object Object]" (string)</code></pre>
+        </li>
+      </ul>
+    </section>
+    
+    
+    <section class="slide" id="complex-type-conversion">
+    	<h2>Conversión implícita de tipos de datos Compuestos a Primitivos</h2>
+    	
+    	<p>Si el objeto existe evalua a true y si el objeto es undefined evalue a false</p>
+    	
+    	<pre><code>if(document.body){  // document.body es un objeto del DOM
+  alert('hay body!');
+}</code></pre>
+
+      <p>Lo que hace JavaScript en la mayoría de los casos es convertir a string usando valueOf() y despues toString().</p>
+      <pre><code>[123,123,123].valueOf().toString(); // "123,123,123"</code></pre>
+    	
+    </section>
+    
+    
+    <section class="slide" id="primitives-vs-primitive-objects">
+    	<h2>Primitivos vs Objetos Primitivos</h2>
+    	<pre><code>var myNum1 = 10;
+var myNum2 = new Number(10);
+
+console.log(typeof myNum1); // "number";
+console.log(typeof myNum2); // "object";
+</code></pre>    
+
+<pre><code>var myString1 = "hola";
+var myString2 = new String("hola");
+
+console.log(typeof myString1); // "string";
+console.log(typeof myString2); // "object";
+</code></pre>	
+    </section>
+    
+    
+    <section class="slide" id="expressions-operators-and-statements">
+    	<h1>Expresiones, Operadores y Sentencias</h1>
+    </section>
+    
+    
+    
+    <section class="slide" id="expressions">
+    	<h2>Expresiones</h2>
+    	<p>En matemáticas, una expresión es una combinación coherente de símbolos que resultan en un único valor.</p>
+    	<pre><code>"Hola"
+myVar
+myNum * 150
+10.2e3
+12 > 3
+</code></pre>
+    </section>
+    
+    
+    
+    <!-- deck.navigation snippet -->
+    <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+    <a href="#" class="deck-next-link" title="Next">&#8594;</a>
+    
+    <!-- deck.status snippet -->
+    <p class="deck-status">
+    	<span class="deck-status-current"></span>
+    	/
+    	<span class="deck-status-total"></span>
+    </p>
+    
+    <!-- deck.goto snippet -->
+    <form action="." method="get" class="goto-form">
+    	<label for="goto-slide">Go to slide:</label>
+    	<input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+    	<datalist id="goto-datalist"></datalist>
+    	<input type="submit" value="Go">
+    </form>
+    
+    <!-- deck.hash snippet -->
+    <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+  </article>
+  
+</div><!-- .container -->
+    
+<!-- Grab CDN jQuery, with a protocol relative URL; fall back to local if offline -->
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+<script>window.jQuery || document.write('<script src="deck-js/jquery-1.7.min.js"><\/script>')</script>
+
+<!-- Deck Core and extensions -->
+<script src="deck-js/core/deck.core.js"></script>
+<script src="deck-js/extensions/hash/deck.hash.js"></script>
+<script src="deck-js/extensions/menu/deck.menu.js"></script>
+<script src="deck-js/extensions/goto/deck.goto.js"></script>
+<script src="deck-js/extensions/status/deck.status.js"></script>
+<script src="deck-js/extensions/navigation/deck.navigation.js"></script>
+
+<!-- Initialize the deck -->
+<script>
+$(function() {
+	$.deck('.slide');
+});
+</script>
+
+</body>
+</html>
