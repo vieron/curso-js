@@ -613,8 +613,6 @@ console.log(typeof myString2); // "object";
     	<h1>Expresiones, Operadores y Sentencias</h1>
     </section>
     
-    
-    
     <section class="slide" id="expressions">
     	<h2>Expresiones</h2>
     	<p>En matemáticas, una expresión es una combinación coherente de símbolos que resultan en un único valor.</p>
@@ -639,7 +637,7 @@ myNum * 150
     </section>
     
     <section class="slide" id="comparison-operators-I">
-    	<h2>Operadores de comparación I</h2>
+    	<h2>Operadores de Comparación</h2>
     	<p>Permiten hacer operaciones con datos. Dados uno o dos operandos se obtiene un resultado.</p>
     	<ul>
     	 <li><h3>== (Igual)</h3></li>
@@ -653,36 +651,272 @@ myNum * 150
     	</ul>
     </section>
     
-    <section class="slide" id="comparison-operators-II">
-    	<h2>Operadores de comparación II</h2>
-    	<p>Permiten hacer operaciones con datos. Dados uno o dos operandos se obtiene un resultado.</p>
+    <section class="slide" id="assignment-operators">
+      <h2>Operadores de Asignación</h2>
       
-      <h3>Números y Cadenas</h3>
-    	<pre><code>21 > 20	// true 
-21 < 20	// false
-10.231 = 10.2310 // true
-3 <= 3 // true 
-4 >= 1 // true
-3 != 10 // true</code></pre>
-      
-      <pre><code>10 >= "9" // true 
-4.01 == "4.01000" // true 
-"32" != 32.0	// false</code></pre>
-
-      <h3>Booleans</h3>
-      <pre><code>true > false // true
-true > 0 // true
-false < 1 // true
-true + true // 2</code></pre>
-      
-      <h3>Fechas</h3>
-      
-      
-    
+      <table class="dft_table">
+      <tbody>
+        <tr>
+          <th width="50%">Operador abreviado</th>
+          <th width="50%">Significado</th>
+        </tr>
+        <tr>
+          <td>x += y</td>
+          <td>x = x + y</td>
+        </tr>
+        <tr>
+          <td>x -= y</td>
+          <td>x = x - y</td>
+        </tr>
+        <tr>
+          <td>x *= y</td>
+          <td>x = x * y</td>
+        </tr>
+        <tr>
+          <td>x /= y</td>
+          <td>x = x / y</td>
+        </tr>
+        <tr>
+          <td>x&nbsp;%= y</td>
+          <td>x = x&nbsp;% y</td>
+        </tr>
+        <tr>
+          <td>x &lt;&lt;= y</td>
+          <td>x = x &lt;&lt; y</td>
+        </tr>
+        <tr>
+          <td>x &gt;&gt;= y</td>
+          <td>x = x &gt;&gt; y</td>
+        </tr>
+        <tr>
+          <td>x &gt;&gt;&gt;= y</td>
+          <td>x = x &gt;&gt;&gt; y</td>
+        </tr>
+        <tr>
+          <td>x &amp;= y</td>
+          <td>x = x &amp; y</td>
+        </tr>
+        <tr>
+          <td>x ^= y</td>
+          <td>x = x ^ y</td>
+        </tr>
+        <tr>
+          <td>x |= y</td>
+          <td>x = x | y</td>
+        </tr>
+      </tbody>
+    </table>
     </section>
     
 
+    <section class="slide" id="logical-operators">
+      <h2>Operadores Lógicos</h2>
+      <table class="dft_table">
+      <tbody><tr>
+      <th>Operador</th>
+      <th>Uso</th>
+      <th>Descripción</th>
+      </tr>
+      <tr>
+      <td>&amp;&amp;</td>
+      <td>expr1&nbsp;&amp;&amp;&nbsp;expr2</td>
+      <td>(AND lógico) Devuelve expr1 si la expresión puede convertirse a falso; de otro modo, devuelve expr2. Cuando se emplea con valores booleanos, &amp;&amp; devuelve true cuando ambos operandos son verdaderos; si no, devuelve false.</td>
+      </tr>
+      <tr>
+      <td>||</td>
+      <td>expr1&nbsp;||&nbsp;expr2</td>
+      <td>(OR lógico) Devuelve expr1 si puede convertirse a verdadero; de otro modo devuelve expr2. Cuando se emplea con valores booleanos, el operador || devuelve true si alguno de los operandos es verdadero; si ambos operandos son falsos devuelve false.</td>
+      </tr>
+      <tr>
+      <td>!</td>
+      <td>!expr</td>
+      <td>(NOT lógico) Devuelve falso si su único operando puede convertirse a verdadero; de otro modo, devuelve verdadero.</td>
+      </tr>
+      </tbody></table>
+    </section>
+    
+    
+    
+    <section class="slide" id="aritmetic-operator">
+      <h2>Operadores Aritméticos</h2>
+      <table class="dft_table">
+      <tbody><tr>
+      <th>Operador</th>
+      <th>Descripción</th>
+      <th>Ejemplo</th>
+      </tr>
+      <tr>
+      <td>%<br>(Módulo)</td>
+      <td>Operador binario. Devuelve el resto de la división entera entre sus dos operandos. </td> <td>12&nbsp;% 5 devuelve 2.</td>
+      </tr>
+      <tr>
+      <td>++<br>(Incremento)</td>
+      <td>Operador unitario. Suma uno a su operando. Si se usa como prefijo (++x), devuelve el valor de su operando después de la suma; si se usa como sufijo (x++), devuelve el valor de su operando antes de sumarle uno.</td>
+      <td>Si <code>x</code> es 3, entonces <code>++x</code> establece <code>x</code> a 4 y devuelve 4, mientras que <code>x++</code> establece <code>x</code> a 4 y devuelve 3.</td>
+      </tr>
+      <tr>
+      <td>--<br>(Decremento)</td>
+      <td>Operador unitario. Resta uno a su operando. Su funcionamiento es análogo al del operador de incremento.</td>
+      <td>Si <code>x</code> es 3, entonces <code>--x</code> establece <code>x</code> a 2 y devuelve 2, mientras que <code>x--</code> establece <code>x</code> a 2 y devuelve 3.</td>
+      </tr>
+      <tr>
+      <td>-<br>(Cambio de signo)</td>
+      <td>Operador unitario. Devuelve su operando cambiado de signo.</td>
+      <td>Si <code>x</code> es 3, entonces <code>-x</code> devuelve -3.</td>
+      </tr>
+      </tbody></table>
+    </section>
 
+
+    <section class="slide" id="other-operators">
+      <h2>Otros operadores</h2>
+      <ul>
+        <li><h3>,</h3></li>
+        <li><h3>? :</h3></li>
+        <li><h3>delete</h3></li>
+        <li><h3>.</h3></li>
+        <li><h3>in</h3></li>
+        <li><h3>instanceof</h3></li>
+        <li><h3>new</h3></li>
+        <li><h3>typeof</h3></li>
+        <li><h3>void</h3></li>
+      </ul>
+      <p><a href="https://developer.mozilla.org/es/Gu%C3%ADa_JavaScript_1.5/Operadores/Operadores_especiales">https://developer.mozilla.org/es/Gu%C3%ADa_JavaScript_1.5/Operadores/Operadores_especiales</a></p>
+    </section>
+    
+    
+    <section class="slide" id="js-statements">
+      <h1>Sentencias</h1>
+    </section>
+    
+    <section class="slide" id="js-statement-block">
+      <h2>block {}</h2>
+      <pre><code>if (true){
+  //expresión
+}</code></pre>
+    </section>
+    
+    <section class="slide" id="js-statement-if-else">
+      <h2>if...else</h2>
+      <pre><code>if (true)
+  //expresión; 
+else
+  //expresión;
+</code></pre>
+
+<pre><code>if (true){
+  //expresión
+}else{
+  //expresión
+}
+</code></pre>
+
+<pre><code>if (true)
+  //expresión
+else if (1){
+  //expresión
+}
+else if (2){
+  //expresión
+}
+</code></pre>
+  
+    </section>
+    
+    <section class="slide" id="js-statement-switch">
+      <h2>switch</h2>
+      <pre><code>switch(expresion){
+  case label1:
+    //statements
+    [break;]
+  case label2:
+    //statements
+    [break;]
+  default:
+    //statements
+    [break;]
+}
+</code></pre>
+
+      <p>En JavaScript, NO hay mucha diferencia de rendimiento respecto al if...else</p>
+      <p>Como buena practica, cerrar siempre con break; para asegurarnos de que el flujo de ejecución sigue fuera del switch.</p>
+      <p><a href="http://www.yuiblog.com/blog/2007/04/25/id-rather-switch-than-fight/">I’d Rather switch Than Fight!</a></p>
+    </section>
+
+
+    <section class="slide" id="js-statement-for">
+      <h2>for</h2>
+      <pre><code>for([initializer]; [test_condition]; [increment_expression]){
+  ...
+}
+</code></pre>
+
+      <pre><code>for(var myLoop = 0; myLoop < 10 ; myLoop++){
+  ...
+}
+</code></pre>
+
+      <h3>Iteradores múltiples</h3>
+      <pre><code>for(var myLoop = 0, myNumber = 10; myLoop < 10 ; myLoop++, myNumber--){
+  ...
+}
+</code></pre>
+    </section>   
+    
+    
+    <section class="slide" id="js-statement-for-in">
+      <h2>for..in</h2>
+      <p>Itera por los indices</p>
+      <pre><code>for (variable in object)
+  ...
+</code></pre>
+
+      <pre><code>for(methods in window){
+  ...
+}</code></pre>
+    </section>
+    
+    
+    <section class="slide" id="js-statement-do-while">
+      <h2>do..while</h2>
+      <pre><code>do
+...
+while (expresion);
+</code></pre>
+
+    <pre><code>do{
+...
+}while (expresion);
+</code></pre>
+    </section>
+    
+    
+    <section class="slide" id="js-statement-break-label-continue">
+        <h2>break, label and continue</h2>
+        <p>Ayudan a tener el control sobre estructuras de loop.</p>
+        <pre><code>for (var i = 0; i < 10; i++){
+  if(i == 3) break;
+}
+        </code></pre>
+    </section>
+    
+    
+    <section class="slide" id="js-statement-break-label-continue">
+        <h2>break, label and continue</h2>
+        <p>Ayudan a tener el control sobre estructuras de loop.</p>
+        <pre><code>for (var i = 0; i < 10; i++){
+      if(i == 3) break;
+    }</code></pre>
+    </section>
+    
+    
+    <section class="slide" id="js-statement-break-label-continue">
+        <h2>break, label and continue</h2>
+        <p>Ayudan a tener el control sobre estructuras de loop.</p>
+        <pre><code>for (var i = 0; i < 10; i++){
+      if(i == 3) break;
+    }</code></pre>
+    </section>
     
     
     
