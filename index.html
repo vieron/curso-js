@@ -891,38 +891,74 @@ while (expresion);
     </section>
     
     
+
+    
     <section class="slide" id="js-statement-break-label-continue">
         <h2>break, label and continue</h2>
-        <p>Ayudan a tener el control sobre estructuras de loop.</p>
+        <p>Ayudan a tener el control sobre estructuras de loop y bloques.</p>
         <pre><code>for (var i = 0; i < 10; i++){
   if(i == 3) break;
+}</code></pre>
+    
+      <pre><code>outer_loop: 
+for(i=0;i<5;i++) {
+  for(j=0;j<5;j++) {
+    break outer_loop;
+    console.log('inside', i, j);
+  }
+  console.log('outside', i);
 }
-        </code></pre>
+</code></pre>
+
+      <pre><code>var myArray = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
+for(var i = 0; i < myArray.length; i++){
+   if(myArray[i] < 5) continue;
+   console.log(myArray[i]);
+}</code></pre>
+    </section>
+    
+    <section class="slide" id="js-statement-function">
+      <h2>Function</h2>
+      <pre><code>function name([param] [, param...]){
+}</code></pre>
+
+    <pre><code>var myFunction = new Function();</code></pre>
+    <pre><code>var myFunction = function(){};</code></pre>
+    
+    <h3>return</h3>
+    <p>Corta el flujo de ejecución de la función y devuelve un valor si se le especifica.</p>
+    <pre><code>var myFunction = function(x, y){
+      return x*y;
+    };</code></pre>
+    
     </section>
     
     
-    <section class="slide" id="js-statement-break-label-continue">
-        <h2>break, label and continue</h2>
-        <p>Ayudan a tener el control sobre estructuras de loop.</p>
-        <pre><code>for (var i = 0; i < 10; i++){
-      if(i == 3) break;
-    }</code></pre>
+    <section class="slide" id="js-statement-throw">
+      <h2>throw</h2>
+      <p>Manejo de errores</p>
+      <pre><code>throw expresion</code></pre>
+      <pre><code>throw "This is an error"</code></pre>
+      <pre><code>{problem: 'dadasdas', info: 'dasdasd', data : new Date()}</code></pre>
     </section>
     
     
-    <section class="slide" id="js-statement-break-label-continue">
-        <h2>break, label and continue</h2>
-        <p>Ayudan a tener el control sobre estructuras de loop.</p>
-        <pre><code>for (var i = 0; i < 10; i++){
-      if(i == 3) break;
-    }</code></pre>
+    <section class="slide" id="js-statement-try-catch">
+      <h2>try..catch..finally</h2>
+      <p>Manejo de errores</p>
+      <pre><code>throw expresion</code></pre>
+      <pre><code>throw "This is an error"</code></pre>
+      <pre><code>{problem: 'dadasdas', info: 'dasdasd', data : new Date()}</code></pre>
     </section>
     
     
-    
-    
-    
-    
+    <section class="slide" id="js-statement-try-catch">
+      <h2>try..catch..finally</h2>
+      <p>Manejo de errores</p>
+      <pre><code>throw expresion</code></pre>
+      <pre><code>throw "This is an error"</code></pre>
+      <pre><code>{problem: 'dadasdas', info: 'dasdasd', data : new Date()}</code></pre>
+    </section>
     
     
     
